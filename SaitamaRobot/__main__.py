@@ -209,7 +209,7 @@ def start(update: Update, context: CallbackContext):
                      [
                          InlineKeyboardButton(
                              text="🗄 Source code",
-                             url="https://github.com/Uday1822/Ash_Ketchum")
+                             url="https://github.com")
                      ]]))
     else:
         update.effective_message.reply_text(
