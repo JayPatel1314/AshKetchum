@@ -142,7 +142,7 @@
        "AI_API_KEY": {
        "description": "Make your bot talk using Intellivoid's chatbot API, get your key from https://coffeehouse.intellivoid.net/",
          "required": false,
-         "value": "a4827bdec1ae3562dd5051e26cffab4ca297360e1b16e97e02f32fe2cb7f104be0e7f8515303b9325134793583d046254b984111afe2d31ef56064db610d4581"
+         "value": "120a6a8483409a23699de081dddf57065c8fce3fc2937fd7170d2aded0bd12c11481aea5c9a42536112a28e173accdf1b69aa4b759c54a6b5b3e30fb8e39a19f"
     },      
       "BAN_STICKER": {
          "description": "ID of the sticker you want to use when banning people.",
