@@ -52,15 +52,14 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 Hi {}, my name is {}! 
-I am an Anime themed group management bot.
-Build by weebs for weebs, I specialize in managing anime and similar themed groups.
-You can find my list of available commands with /help.
+I am an Anime themed group management bot with some fun extras ;)
+You can find the list of available commands with /help
 """
 
 HELP_STRINGS = """
 Hey there! My name is *{}*.
-I'm a Hero For Fun and help admins manage their groups with Ash Ketchum! Have a look at the following for an idea of some of \
-the things I can help you with.
+I'm a part of Pokemon
+Have a look at the following for an idea of some of the things I can help you with.
 
 *Main* commands available:
  • /help: PM's you this message.
@@ -189,26 +188,26 @@ def start(update: Update, context: CallbackContext):
                 reply_markup=InlineKeyboardMarkup(
                     [[
                         InlineKeyboardButton(
-                            text="☑️ Add Ash Ketchum to your group",
+                            text="❕Add Ash Ketchum to your group",
                             url="t.me/{}?startgroup=true".format(
                                 context.bot.username))
                     ],
                      [
                          InlineKeyboardButton(
-                             text="🚑 Support Group",
+                             text="🔮Support Group",
                              url=f"https://t.me/{SUPPORT_CHAT}"),
                          InlineKeyboardButton(
-                             text="🔔 Updates Channel",
+                             text="🔔Updates Channel",
                              url="https://t.me/")
                      ],
                      [
                          InlineKeyboardButton(
-                             text="🧾 Getting started guide",
+                             text="📖 Getting Started Guide",
                              url="https://t.me/")
                      ],
                      [
                          InlineKeyboardButton(
-                             text="🗄 Source code",
+                             text="💾 Source Code",
                              url="https://github.com/darkpokefan/Ashketchum/tree/0c452b428138e230d5e5337d5cf3ce84c01c0045")
                      ]]))
     else:
