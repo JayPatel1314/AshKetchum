@@ -209,7 +209,7 @@ def start(update: Update, context: CallbackContext):
                      [
                          InlineKeyboardButton(
                              text="🗄 Source code",
-                             url="https://github.com")
+                             url="https://github.com/darkpokefan/Ashketchum/tree/0c452b428138e230d5e5337d5cf3ce84c01c0045")
                      ]]))
     else:
         update.effective_message.reply_text(
