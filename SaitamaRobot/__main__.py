@@ -198,17 +198,17 @@ def start(update: Update, context: CallbackContext):
                              url=f"https://t.me/{SUPPORT_CHAT}"),
                          InlineKeyboardButton(
                              text="🔔Updates Channel",
-                             url="https://t.me/")
+                             url="https://t.me/BotLabUpdates")
                      ],
                      [
                          InlineKeyboardButton(
                              text="📖 Getting Started Guide",
-                             url="https://t.me/")
+                             url="https://t.me/BotLabUpdates/3")
                      ],
                      [
                          InlineKeyboardButton(
                              text="💾 Source Code",
-                             url="https://github.com/darkpokefan/Ashketchum/tree/0c452b428138e230d5e5337d5cf3ce84c01c0045")
+                             url="https://github.com/darkpokefan/Ashketchum")
                      ]]))
     else:
         update.effective_message.reply_text(
