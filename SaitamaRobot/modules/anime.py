@@ -541,14 +541,14 @@ def site_search(update: Update, context: CallbackContext, site: str):
         result = f"<b>Search results for</b> <code>{html.escape(search_query)}</code> <b>on</b> <code>Raretoonindia</code>: \n"
         for entry in search_result:
                  
-             if entry.text.strip() == "Nothing Found":
+           if entry.text.strip() == "Nothing Found":
                 result = f"<b>No result found for</b> <code>{html.escape(search_query)}</code> <b>on</b> <code>AnimeKayo</code>"
                 more_results = False
                 break
                 
-            post_link = entry.a['href']
-            post_name = html.escape(entry.text.strip())
-            result += f"• <a href='{post_link}'>{post_name}</a>\n"
+           post_link = entry.a['href']
+           post_name = html.escape(entry.text.strip())
+           result += f"• <a href='{post_link}'>{post_name}</a>\n"
 
     buttons = [[InlineKeyboardButton("See all results", url=search_url)]]
 
