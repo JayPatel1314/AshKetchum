@@ -14,7 +14,7 @@ from telegram.ext import CallbackContext, CallbackQueryHandler, run_async
 info_btn = "More Information"
 kaizoku_btn = "Kaizoku ☠️"
 kayo_btn = "Kayo 🏴‍☠️"
-rare_btn = "Rare ☠️"
+animetm_btn = "Animetm ☠️"
 prequel_btn = "⬅️ Prequel"
 sequel_btn = "Sequel ➡️"
 close_btn = "Close ❌"
@@ -532,13 +532,13 @@ def site_search(update: Update, context: CallbackContext, site: str):
             post_name = html.escape(entry.text.strip())
             result += f"• <a href='{post_link}'>{post_name}</a>\n"
             
-    elif site == "rare":
-        search_url = f"https://raretoonsindia.net/?s={search_query}"
+    elif site == "animetm":
+        search_url = f"https://animetmdubbers.in/?s={search_query}"
         html_text = requests.get(search_url).text
         soup = bs4.BeautifulSoup(html_text, "html.parser")
         search_result = soup.find_all("h2", {'class': "title"}) 
         
-        result = f"<b>Search results for</b> <code>{html.escape(search_query)}</code> <b>on</b> <code>Raretoonindia</code>: \n"
+        result = f"<b>Search results for</b> <code>{html.escape(search_query)}</code> <b>on</b> <code>Animetmdubber</code>: \n"
         for entry in search_result:
                  
            if entry.text.strip() == "Nothing Found":
@@ -574,8 +574,8 @@ def kayo(update: Update, context: CallbackContext):
 
 
 @run_async
-def rare(update: Update, context: CallbackContext):
-    site_search(update, context, "rare")
+def animetm(update: Update, context: CallbackContext):
+    site_search(update, context, "animetm")
 
 
 __help__ = """
@@ -590,7 +590,7 @@ Get information about anime, manga or characters from [AniList](anilist.co).
  • `/upcoming`*:* returns a list of new anime in the upcoming seasons.
  • `/kaizoku <anime>`*:* search an anime on animekaizoku.com
  • `/kayo <anime>`*:* search an anime on animekayo.com
- • `/rare <anime>`*:* search an anime on raretoonsindia.net
+ • `/animetm <anime>`*:* search an anime on animetmdubbers.in
  • `/airing <anime>`*:* returns anime airing info.
 
  """
@@ -603,7 +603,7 @@ USER_HANDLER = DisableAbleCommandHandler("user", user)
 UPCOMING_HANDLER = DisableAbleCommandHandler("upcoming", upcoming)
 KAIZOKU_SEARCH_HANDLER = DisableAbleCommandHandler("kaizoku", kaizoku)
 KAYO_SEARCH_HANDLER = DisableAbleCommandHandler("kayo", kayo)
-RARE_SEARCH_HANDLER = DisableAbleCommandHandler("rare", rare)
+ANIMETM_SEARCH_HANDLER = DisableAbleCommandHandler("animetm", animetm)
 BUTTON_HANDLER = CallbackQueryHandler(button, pattern='anime_.*')
 
 dispatcher.add_handler(BUTTON_HANDLER)
@@ -614,16 +614,16 @@ dispatcher.add_handler(AIRING_HANDLER)
 dispatcher.add_handler(USER_HANDLER)
 dispatcher.add_handler(KAIZOKU_SEARCH_HANDLER)
 dispatcher.add_handler(KAYO_SEARCH_HANDLER)
-dispatcher.add_handler(RARE_SEARCH_HANDLER)
+dispatcher.add_handler(ANIMETM_SEARCH_HANDLER)
 dispatcher.add_handler(UPCOMING_HANDLER)
 
 __mod_name__ = "Anime"
 __command_list__ = [
     "anime", "manga", "character", "user", "upcoming", "kaizoku", "airing",
-    "kayo" "rare",
+    "kayo" "animetm",
 ]
 __handlers__ = [
     ANIME_HANDLER, CHARACTER_HANDLER, MANGA_HANDLER, USER_HANDLER,
     UPCOMING_HANDLER, KAIZOKU_SEARCH_HANDLER, KAYO_SEARCH_HANDLER,
-    RARE_SEARCH_HANDLER,  BUTTON_HANDLER, AIRING_HANDLER
+    ANIMETM_SEARCH_HANDLER,  BUTTON_HANDLER, AIRING_HANDLER
 ]
