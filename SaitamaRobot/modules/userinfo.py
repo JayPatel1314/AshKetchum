@@ -84,15 +84,16 @@ def hpmanager(user):
         # Example: if HP is 100 but user has 5 diff fbans
         # Available HP is (2*5) = 10% less than Max HP
         # So.. 10% of 100HP = 90HP
-        
-# Commenting out fban health decrease cause it wasnt working and isnt needed ig.
-        #_, fbanlist = get_user_fbanlist(user.id)
-        #new_hp -= no_by_per(total_hp, 2 * len(fbanlist))
 
-    # Bad status effects:
-    # gbanned users will always have 5% HP from max HP
-    # Example: If HP is 100 but gbanned
-    # Available HP is 5% of 100 = 5HP
+
+# Commenting out fban health decrease cause it wasnt working and isnt needed ig.
+#_, fbanlist = get_user_fbanlist(user.id)
+#new_hp -= no_by_per(total_hp, 2 * len(fbanlist))
+
+# Bad status effects:
+# gbanned users will always have 5% HP from max HP
+# Example: If HP is 100 but gbanned
+# Available HP is 5% of 100 = 5HP
 
     else:
         new_hp = no_by_per(total_hp, 5)
@@ -354,7 +355,8 @@ def about_me(update: Update, context: CallbackContext):
     if info:
         update.effective_message.reply_text(
             f"*{user.first_name}*:\n{escape_markdown(info)}",
-            parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True)
     elif message.reply_to_message:
         username = message.reply_to_message.from_user.first_name
         update.effective_message.reply_text(
@@ -420,7 +422,8 @@ def about_bio(update: Update, context: CallbackContext):
     if info:
         update.effective_message.reply_text(
             "*{}*:\n{}".format(user.first_name, escape_markdown(info)),
-            parse_mode=ParseMode.MARKDOWN,disable_web_page_preview=True)
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True)
     elif message.reply_to_message:
         username = user.first_name
         update.effective_message.reply_text(
