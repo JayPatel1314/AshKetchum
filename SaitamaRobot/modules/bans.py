@@ -34,49 +34,49 @@ def ban(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("I doubt that's a user.")
+        message.reply_text("Is that a trainer?")
         return log_message
 
     try:
         member = chat.get_member(user_id)
     except BadRequest as excp:
         if excp.message == "User not found":
-            message.reply_text("Can't seem to find this person.")
+            message.reply_text("Can't able to find This Trainer.")
             return log_message
         else:
             raise
 
     if user_id == bot.id:
-        message.reply_text("Oh yeah, ban myself, noob!")
+        message.reply_text("Oh yeah, You Lost battle and trying to ban myself, noob! Better luck next time.")
         return log_message
 
     if is_user_ban_protected(chat, user_id, member) and user not in DEV_USERS:
         if user_id == OWNER_ID:
             message.reply_text(
-                "Trying to put me against a God level disaster huh?")
+                "Bruh I can't able to Challenge This Great Pokemon Master. Please Don't 😥😥")
             return log_message
         elif user_id in DEV_USERS:
-            message.reply_text("I can't act against our own.")
+            message.reply_text("Sorry I cant battle with Legendary Trainers")
             return log_message
         elif user_id in SUDO_USERS:
             message.reply_text(
-                "Fighting this Dragon here will put civilian lives at risk.")
+                "If I fight with this person then the Stadium will burst.. So I am not.")
             return log_message
         elif user_id in SUPPORT_USERS:
             message.reply_text(
-                "Bring an order from Heroes association to fight a Demon disaster."
+                "Bring Legendary Trainers Like Red, Gold, Wallece etc. To fight this trainer."
             )
             return log_message
         elif user_id in TIGER_USERS:
             message.reply_text(
-                "Bring an order from Heroes association to fight a Tiger disaster."
+                "Bring Legendary Trainers Like Red, Gold, Wallece etc. To fight this trainer."
             )
             return log_message
         elif user_id in WHITELIST_USERS:
             message.reply_text("Wolf abilities make them ban immune!")
             return log_message
         else:
-            message.reply_text("This user has immunity and cannot be banned.")
+            message.reply_text("This Trainer is So powerful. I can't ban him.")
             return log_message
 
     log = (
@@ -129,7 +129,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("I doubt that's a user.")
+        message.reply_text("Is he a trainer?")
         return log_message
 
     try:
@@ -142,7 +142,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
             raise
 
     if user_id == bot.id:
-        message.reply_text("I'm not gonna BAN myself, are you crazy?")
+        message.reply_text("Sorry noob! I can't ban myself. Lost Your mind or what?")
         return log_message
 
     if is_user_ban_protected(chat, user_id, member):
@@ -189,7 +189,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
         if excp.message == "Reply message not found":
             # Do not reply
             message.reply_text(
-                f"Banned! User will be banned for {time_val}.", quote=False)
+                f"Banned! This Trainer had been banned for {time_val}. But I know he will come again for revenge", quote=False)
             return log
         else:
             LOGGER.warning(update)
@@ -216,24 +216,24 @@ def punch(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("I doubt that's a user.")
+        message.reply_text("Is that a trainer.")
         return log_message
 
     try:
         member = chat.get_member(user_id)
     except BadRequest as excp:
         if excp.message == "User not found":
-            message.reply_text("I can't seem to find this user.")
+            message.reply_text("Wait He is a trainer?.")
             return log_message
         else:
             raise
 
     if user_id == bot.id:
-        message.reply_text("Yeahhh I'm not gonna do that.")
+        message.reply_text("Sorry, but I'm not gonna do that.")
         return log_message
 
     if is_user_ban_protected(chat, user_id):
-        message.reply_text("I really wish I could punch this user....")
+        message.reply_text("Ummmmm... I can't able to deafeat this Person....")
         return log_message
 
     res = chat.unban_member(user_id)  # unban on current user = kick
@@ -255,7 +255,7 @@ def punch(update: Update, context: CallbackContext) -> str:
         return log
 
     else:
-        message.reply_text("Well damn, I can't punch that user.")
+        message.reply_text("Well damn, I Deafeated Against this Trainer.")
 
     return log_message
 
@@ -267,13 +267,13 @@ def punchme(update: Update, context: CallbackContext):
     user_id = update.effective_message.from_user.id
     if is_user_admin(update.effective_chat, user_id):
         update.effective_message.reply_text(
-            "I wish I could... but you're an admin.")
+            "You are a Legendary Trainer. So I can't kick you.")
         return
 
     res = update.effective_chat.unban_member(
         user_id)  # unban on current user = kick
     if res:
-        update.effective_message.reply_text("*punches you out of the group*")
+        update.effective_message.reply_text("*Deafeated This Person* Oh yeah This Person Lost😉😉. *Kicked*")
     else:
         update.effective_message.reply_text("Huh? I can't :/")
 
@@ -294,28 +294,28 @@ def unban(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("I doubt that's a user.")
+        message.reply_text("Is that a trainer.")
         return log_message
 
     try:
         member = chat.get_member(user_id)
     except BadRequest as excp:
         if excp.message == "User not found":
-            message.reply_text("I can't seem to find this user.")
+            message.reply_text("Can't able to find this Trainer.")
             return log_message
         else:
             raise
 
     if user_id == bot.id:
-        message.reply_text("How would I unban myself if I wasn't here...?")
+        message.reply_text("Wow Gary. Don't show your Smartness to unban me. Check Your Eyes I m here only Noob 😑😑...?")
         return log_message
 
     if is_user_in_chat(chat, user_id):
-        message.reply_text("Isn't this person already here??")
+        message.reply_text("Hey Brock You Open Your Eyes. This person is here only. Baka😒")
         return log_message
 
     chat.unban_member(user_id)
-    message.reply_text("Yep, this user can join!")
+    message.reply_text("Yep, This Trainer can join this arena!")
 
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"
@@ -351,18 +351,18 @@ def selfunban(context: CallbackContext, update: Update) -> str:
     try:
         member = chat.get_member(user.id)
     except BadRequest as excp:
-        if excp.message == "User not found":
-            message.reply_text("I can't seem to find this user.")
+        if excp.message == "Trainer not found":
+            message.reply_text("I can't Find this Person.")
             return
         else:
             raise
 
     if is_user_in_chat(chat, user.id):
-        message.reply_text("Aren't you already in the chat??")
+        message.reply_text("Hey Proffeser Oak What Happened? You are Here only... Remember your things.")
         return
 
     chat.unban_member(user.id)
-    message.reply_text("Yep, I have unbanned you.")
+    message.reply_text("Yep, I have unbanned you. Go and Take revenge.")
 
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"
