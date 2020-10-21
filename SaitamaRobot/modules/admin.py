@@ -34,7 +34,7 @@ def promote(update: Update, context: CallbackContext) -> str:
 
     if not (promoter.can_promote_members or
             promoter.status == "creator") and not user.id in SUDO_USERS:
-        message.reply_text("You don't have the necessary rights to do that!")
+        message.reply_text("Hey U don't have Enough Rights To do that!")
         return
 
     user_id = extract_user(message, args)
@@ -78,9 +78,9 @@ def promote(update: Update, context: CallbackContext) -> str:
     except BadRequest as err:
         if err.message == "User_not_mutual_contact":
             message.reply_text(
-                "I can't promote someone who isn't in the group.")
+                "Hey Brock Check Your Eyes Because You are Trying to promote the User who is not in this group 😑😑😑.")
         else:
-            message.reply_text("An error occured while promoting.")
+            message.reply_text("Oops An error occured while promoting that Trainer.")
         return
 
     bot.sendMessage(
@@ -115,7 +115,7 @@ def demote(update: Update, context: CallbackContext) -> str:
     user_id = extract_user(message, args)
     if not user_id:
         message.reply_text(
-            "You don't seem to be referring to a user or the ID specified is incorrect.."
+            "Ooo Sir The First Refer the User Or First Check the Id whether it is correct.."
         )
         return
 
@@ -126,16 +126,16 @@ def demote(update: Update, context: CallbackContext) -> str:
 
     if user_member.status == 'creator':
         message.reply_text(
-            "This person CREATED the chat, how would I demote them?")
+            "Ayy Lmao, This person Is The best Pokemon Trainer and he created this chat, So why I will demote him? *Grabs Popcorn*")
         return
 
     if not user_member.status == 'administrator':
-        message.reply_text("Can't demote what wasn't promoted!")
+        message.reply_text("Check Your Eyes Bro, This Trainer is Not Promoted only. So how can I demote Lmao.")
         return
 
     if user_id == bot.id:
         message.reply_text(
-            "I can't demote myself! Get an admin to do it for me.")
+            "Ayy Lmao You Lost The match and Trying to demote me! The truth is I can't demote myself. Only Elite Members Which are Admins can demote me.")
         return
 
     try:
@@ -153,7 +153,7 @@ def demote(update: Update, context: CallbackContext) -> str:
 
         bot.sendMessage(
             chat.id,
-            f"Sucessfully demoted <b>{user_member.user.first_name or user_id}</b>!",
+            f"Sucessfully demoted This Trainer. Now Go and do Training <b>{user_member.user.first_name or user_id}</b>!",
             parse_mode=ParseMode.HTML)
 
         log_message = (
@@ -166,7 +166,7 @@ def demote(update: Update, context: CallbackContext) -> str:
         return log_message
     except BadRequest:
         message.reply_text(
-            "Could not demote. I might not be admin, or the admin status was appointed by another"
+            "Sorry I can't . I might not be admin, or the admin status was appointed by another"
             " user, so I can't act upon them!")
         return
 
@@ -191,13 +191,13 @@ def set_title(update: Update, context: CallbackContext):
 
     if not user_id:
         message.reply_text(
-            "You don't seem to be referring to a user or the ID specified is incorrect.."
+            "Ooo Sir The First Refer the User Or First Check the Id whether it is correct..."
         )
         return
 
     if user_member.status == 'creator':
         message.reply_text(
-            "This person CREATED the chat, how can i set custom title for him?")
+            "This Pokemon Master had CREATED the chat, how can i set custom title for him? Tell him To set by himself")
         return
 
     if not user_member.status == 'administrator':
@@ -208,7 +208,7 @@ def set_title(update: Update, context: CallbackContext):
 
     if user_id == bot.id:
         message.reply_text(
-            "I can't set my own title myself! Get the one who made me admin to do it for me."
+            "Sorry But I can't Set Title for myself! First contact any admin or group owner to do so."
         )
         return
 
@@ -225,7 +225,7 @@ def set_title(update: Update, context: CallbackContext):
         bot.setChatAdministratorCustomTitle(chat.id, user_id, title)
     except BadRequest:
         message.reply_text(
-            "I can't set custom title for admins that I didn't promote!")
+            "Sorry, I can't set title of the person whom I hadn't promoted!")
         return
 
     bot.sendMessage(
