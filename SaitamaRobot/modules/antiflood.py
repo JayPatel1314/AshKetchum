@@ -71,10 +71,10 @@ def check_flood(update, context) -> str:
                 user.id,
                 until_date=mutetime,
                 permissions=ChatPermissions(can_send_messages=False))
-            execstrings = ("Muted for {}".format(getvalue))
+            execstrings = ("Muted for {}. *Grabs cookies*".format(getvalue))
             tag = "TMUTE"
         send_message(update.effective_message,
-                     "Beep Boop! Boop Beep!\n{}!".format(execstrings))
+                     "Wanna Spam?! Sorry it's not your house Man!\n{}!".format(execstrings))
 
         return "<b>{}:</b>" \
                "\n#{}" \
@@ -84,12 +84,12 @@ def check_flood(update, context) -> str:
 
     except BadRequest:
         msg.reply_text(
-            "I can't restrict people here, give me permissions first! Until then, I'll disable anti-flood."
+            "Sir If you want To Enable Antiflood in Chat. So please give me permissions first."
         )
         sql.set_flood(chat.id, 0)
         return "<b>{}:</b>" \
                "\n#INFO" \
-               "\nDon't have enough permission to restrict users so automatically disabled anti-flood".format(chat.title)
+               "\nSir If you want To Enable Antiflood in Chat. So please give me permissions first".format(chat.title)
 
 
 @run_async
@@ -135,7 +135,7 @@ def set_flood(update, context) -> str:
     else:
         if update.effective_message.chat.type == "private":
             send_message(update.effective_message,
-                         "This command is meant to use in group not in PM")
+                         "This Command Is Used In group. You can't use it in pm")
             return ""
         chat_id = update.effective_chat.id
         chat_name = update.effective_message.chat.title
@@ -148,7 +148,7 @@ def set_flood(update, context) -> str:
                 text = message.reply_text(
                     "Antiflood has been disabled in {}.".format(chat_name))
             else:
-                text = message.reply_text("Antiflood has been disabled.")
+                text = message.reply_text("Antiflood has been disabled in this chat.")
 
         elif val.isdigit():
             amount = int(val)
@@ -158,7 +158,7 @@ def set_flood(update, context) -> str:
                     text = message.reply_text(
                         "Antiflood has been disabled in {}.".format(chat_name))
                 else:
-                    text = message.reply_text("Antiflood has been disabled.")
+                    text = message.reply_text("Antiflood has been disabled in this chat.")
                 return "<b>{}:</b>" \
                        "\n#SETFLOOD" \
                        "\n<b>Admin:</b> {}" \
@@ -175,7 +175,7 @@ def set_flood(update, context) -> str:
                 sql.set_flood(chat_id, amount)
                 if conn:
                     text = message.reply_text(
-                        "Anti-flood has been set to {} in chat: {}".format(
+                        "Anti-flood has been set to {} in this chat: {}".format(
                             amount, chat_name))
                 else:
                     text = message.reply_text(
@@ -250,7 +250,7 @@ def set_flood_mode(update, context):
     else:
         if update.effective_message.chat.type == "private":
             send_message(update.effective_message,
-                         "This command is meant to use in group not in PM")
+                         "This Command is used in group. You can't use it in pm")
             return ""
         chat = update.effective_chat
         chat_id = update.effective_chat.id
