@@ -102,7 +102,7 @@ def ban(update: Update, context: CallbackContext) -> str:
     except BadRequest as excp:
         if excp.message == "Reply message not found":
             # Do not reply
-            message.reply_text('Banned!', quote=False)
+            message.reply_text('Deafeated this trainer😉😉. Banned!', quote=False)
             return log
         else:
             LOGGER.warning(update)
@@ -241,7 +241,7 @@ def punch(update: Update, context: CallbackContext) -> str:
         # bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
         bot.sendMessage(
             chat.id,
-            f"One Punched! {mention_html(member.user.id, member.user.first_name)}.",
+            f"Deafeated! {mention_html(member.user.id, member.user.first_name)} Go To training Then Challenge this Gym.",
             parse_mode=ParseMode.HTML)
         log = (
             f"<b>{html.escape(chat.title)}:</b>\n"
